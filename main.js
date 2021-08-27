@@ -1,5 +1,3 @@
-
-
 var paddle2 =10,paddle1=10;
 
 var paddle1X = 10,paddle1Height = 110;
@@ -25,6 +23,8 @@ rightWristX = 0;
 scoreRightWrist = 0;
 
 game_status = "";
+
+//var doggo_theme = new Audio("https://saantonandre.github.io/doggo_theme.wav");
 
  function preload() {
   ball_touch_paddel = loadSound("ball_touch_paddel.wav");
@@ -62,12 +62,11 @@ function gotPoses(results)
 function startGame()
 {
   game_status = "start";
-  document.getElementById("status").innerHTML = "Game Is Loaded";
+  document.getElementById("status").innerHTML = "Game Is Loading";
 }
 
 function draw(){
-if(game_status == "start")
-{
+
   background(0); 
   image(video, 0, 0, 700, 600);
 
@@ -86,7 +85,9 @@ if(game_status == "start")
     circle(rightWristX, rightWristY, 30);
   }
 
-
+  if(game_status == "start")
+  {
+    document.getElementById("status").innerHTML = "Game Is Loaded";
     //funtion paddleInCanvas call 
     paddleInCanvas();
         
@@ -188,7 +189,7 @@ if(pcscore ==4){
     text("Press Restart button to play again!",width/2,height/2+30)
     noLoop();
     pcscore = 0;
- }
+}
    if(ball.y+ball.r > height || ball.y-ball.r <0){
        ball.dy =- ball.dy;
    }   
@@ -220,7 +221,6 @@ function paddleInCanvas(){
 
 function restart()
 {
-  loop();
   pcscore = 0;
-  playerscore = 0;
+  loop();
 }
